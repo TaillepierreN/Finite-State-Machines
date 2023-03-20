@@ -32,7 +32,7 @@ public class State
         stage = EVENT.ENTER;
         player = _player;
     }
-    public virtual void Enter() { stage = EVENT.ENTER;}
+    public virtual void Enter() { stage = EVENT.UPDATE;}
     public virtual void Update() { stage = EVENT.UPDATE;}
     public virtual void Exit() { stage = EVENT.EXIT;}
 
@@ -66,7 +66,7 @@ public class Idle : State{
             nextState = new Patrol(npc, agent, anim, player);
             stage = EVENT.EXIT;
         }
-        base.Update();
+
     }
     public override void Exit()
     {
@@ -98,7 +98,7 @@ public class Patrol: State
             } else currentIndex++;
             agent.SetDestination(GameEnvironment.Singleton.Checkpoints[currentIndex].transform.position);
         }
-        base.Update();
+ 
     }
     public override void Exit()
     {
